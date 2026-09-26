@@ -1,0 +1,5 @@
+.venv/
+.venv_clean/
+.env/
+1.LLMs/__pycache__s
+.vscode/
