@@ -319,8 +319,8 @@ def main() -> None:
     task_name = st.sidebar.text_input("Project / Task Name", value=st.session_state.task_name)
     language = st.sidebar.selectbox(
         "Language",
-        ["Python", "JavaScript", "TypeScript", "Java", "Go", "Other"],
-        index=["Python", "JavaScript", "TypeScript", "Java", "Go", "Other"].index(st.session_state.language or "Python"),
+        ["Python", "JavaScript", "TypeScript", "Java", "Go", "SQL", "Other"],
+        index=["Python", "JavaScript", "TypeScript", "Java", "Go", "SQL", "Other"].index(st.session_state.language or "Python"),
     )
     requirement = st.sidebar.text_area("Requirement", value=st.session_state.requirement, height=180)
     additional_instructions = st.sidebar.text_area("Additional Instructions", value=st.session_state.additional_instructions, height=120)

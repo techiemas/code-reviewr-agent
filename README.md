@@ -142,12 +142,51 @@ streamlit run app.py
 
 Then open the local Streamlit URL in your browser.
 
+## Deploying with Cloudflare Tunnel
+
+This project is a Python Streamlit app, so the easiest way to share it publicly is to expose the local app through Cloudflare Tunnel.
+
+### Windows quick start
+
+Start the app in one terminal:
+
+```powershell
+cd "C:\Users\HP\Downloads\AI_PROJECT\code-reviewr-agent"
+.\.venv\Scripts\Activate.ps1
+streamlit run app.py
+```
+
+Then in a second terminal, run the tunnel using the installed Cloudflare binary:
+
+```powershell
+& "${env:ProgramFiles(x86)}\cloudflared\cloudflared.exe" tunnel --url http://localhost:8501
+```
+
+If the tunnel prompts you to authenticate, follow the browser login flow. Once it starts successfully, Cloudflare will print a public URL such as:
+
+```text
+https://<random-name>.trycloudflare.com
+```
+
+Share that URL to access the app from anywhere.
+
+### Keep the tunnel alive
+
+The tunnel process must remain running while the app is being shared. If you close the tunnel terminal, the public link will stop working.
+
+### Notes
+
+- The app listens on port `8501`
+- The tunnel target must always be `http://localhost:8501`
+- Use a `.env` file with your API key before starting the app
+- Do not commit secrets to GitHub
+
 ## Example usage
 
 Use the sidebar to set:
 
 - Project / Task Name: `API utility`
-- Language: `Python`
+- Language: `Python` or `SQL`
 - Requirement: `Build a Python script that reads a CSV file and summarizes the top 10 values by column.`
 - Additional Instructions: `Use standard library only and keep the code easy to read.`
 
